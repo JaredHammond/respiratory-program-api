@@ -1,0 +1,62 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:../resp.db"
+}
+
+model FitTests {
+  FitTestID    Int     @id @unique(map: "sqlite_autoindex_FitTests_1") @default(autoincrement())
+  employeeID   Int?
+  respiratorID Int?
+  TestDate     String?
+  Protocol     String?
+  Pass_Fail    String? @map("Pass/Fail")
+  Comments     String?
+}
+
+model MedicalEvaluations {
+  MedEvalID   Int     @id @unique(map: "sqlite_autoindex_MedicalEvaluations_1") @default(autoincrement())
+  employeeID  Int?
+  PLHCP       String?
+  EvalDate    String?
+  Result      String?
+  AppFullFace Boolean?
+  AppHalfFace Boolean?
+  AppPAPR     Boolean?
+  AppDustMask Boolean?
+  AppSCBA     Boolean?
+  Comments    String?
+}
+
+model RespiratorUsers {
+  employeeID       Int     @id @unique(map: "sqlite_autoindex_RespiratorUsers_1") @default(autoincrement())
+  firstname        String?
+  lastname         String?
+  position         String?
+  previousemployee Int?
+  inactive         Int?
+  appdonfile       Int?
+  appendixdpdf     String?
+}
+
+model Respirators {
+  respiratorID    Int     @id @unique(map: "sqlite_autoindex_Respirators_1") @default(autoincrement())
+  manufacturer    String?
+  series          String?
+  model           String?
+  size            String?
+  FitTestRequired Int?
+  respiratorType  String?
+  protectionType  String?
+}
+
+model Vendors {
+  VendorID       Int     @id @unique(map: "sqlite_autoindex_Vendors_1") @default(autoincrement())
+  VendorName     String?
+  Address_Street String?
+  Address_City   String?
+  Address_State  String?
+  Address_ZIP    Int?
+  PhoneNumber    Float?
+  Comments       String?
+  Attachments    String?
+}
