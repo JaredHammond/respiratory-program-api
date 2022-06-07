@@ -1,6 +1,10 @@
 datasource db {
-  provider = "sqlite"
-  url      = "file:../dev.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
 }
 
 model Employee {
@@ -40,6 +44,7 @@ model FitTest {
 
 model Respirator {
   id              Int     @id @default(autoincrement())
+  oldId           Int?    @unique
   manufacturer    String
   series          String
   model           String

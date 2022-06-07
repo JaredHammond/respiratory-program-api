@@ -1,0 +1,10 @@
+Goal of the app: To be a single place to keep track of:
+    -all respirator users
+    -their approved respirators
+    -the dates until they need to be fit tested
+    -their medical evals,
+    -their appendix D forms
+
+It should build reports like:
+    -Upcoming fit test dates
+    -All approved 
