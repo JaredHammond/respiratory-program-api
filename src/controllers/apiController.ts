@@ -1,6 +1,7 @@
+import { prisma } from '../prisma-client'
 import {Request, Response} from 'express';
 
-export const getRespirators = (req: Request, res: Response): void => {
-    res.send('respond with a resource');
+export const getRespirators = async (req: Request, res: Response): Promise<void> => {
+    const respirators = await prisma.respirator.findMany();
+    res.json(respirators);
 }
-
